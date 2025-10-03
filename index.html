@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>昇航電腦｜部落格</title>
+  <meta name="description" content="昇航電腦的技術網誌：教學、案例與最新動態。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <a href="#" class="logo" aria-label="昇航電腦首頁">昇航電腦</a>
+        <span class="tagline">技術網誌｜分享教學、案例與訊息</span>
+      </div>
+      <nav class="nav" aria-label="主選單">
+        <button class="nav-toggle" aria-label="切換選單">☰</button>
+        <ul class="nav-list">
+          <li><a href="#posts">文章</a></li>
+          <li><a href="#categories">分類</a></li>
+          <li><a href="#about">關於</a></li>
+          <li><a href="#contact">聯絡</a></li>
+        </ul>
+      </nav>
+      <button class="theme-toggle" aria-label="切換主題">🌗</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>昇航電腦技術網誌</h1>
+      <p>從零到一的技術筆記與實務案例，陪你打造更好的網站與系統。</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#posts">開始閱讀</a>
+        <a class="btn" href="#about">認識我們</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <section id="posts" class="posts">
+      <h2>最新文章</h2>
+      <div class="post-grid">
+        <article class="post-card">
+          <a class="cover" href="#">
+            <div class="cover-fallback">昇航電腦</div>
+          </a>
+          <div class="post-meta">
+            <span class="date">2025-10-03</span>
+            <span class="dot">•</span>
+            <span class="tags">教學, GitHub Pages</span>
+          </div>
+          <h3 class="post-title"><a href="#">用 gh-pages 快速部署你的靜態網站</a></h3>
+          <p class="post-excerpt">一步步把本機網站推上 GitHub Pages，免後端、免資料庫，立即上線。</p>
+          <a class="read-more" href="#">閱讀全文 →</a>
+        </article>
+
+        <article class="post-card">
+          <a class="cover" href="#">
+            <div class="cover-fallback">昇航電腦</div>
+          </a>
+          <div class="post-meta">
+            <span class="date">2025-09-12</span>
+            <span class="dot">•</span>
+            <span class="tags">前端, 性能優化</span>
+          </div>
+          <h3 class="post-title"><a href="#">前端效能快修指南：圖片、資源與快取</a></h3>
+          <p class="post-excerpt">從圖片格式到資源壓縮，再到快取策略，幫你的網站載入更順更快。</p>
+          <a class="read-more" href="#">閱讀全文 →</a>
+        </article>
+
+        <article class="post-card">
+          <a class="cover" href="#">
+            <div class="cover-fallback">昇航電腦</div>
+          </a>
+          <div class="post-meta">
+            <span class="date">2025-08-01</span>
+            <span class="dot">•</span>
+            <span class="tags">案例, UI/UX</span>
+          </div>
+          <h3 class="post-title"><a href="#">從需求到上線：小型官網改版實錄</a></h3>
+          <p class="post-excerpt">記錄一次實務改版流程，包含需求釐清、版型設計、前端串接與部署。</p>
+          <a class="read-more" href="#">閱讀全文 →</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="categories" class="categories">
+      <h2>分類</h2>
+      <ul class="chip-list">
+        <li><a class="chip" href="#">教學</a></li>
+        <li><a class="chip" href="#">案例分享</a></li>
+        <li><a class="chip" href="#">前端</a></li>
+        <li><a class="chip" href="#">部署</a></li>
+        <li><a class="chip" href="#">UI/UX</a></li>
+      </ul>
+    </section>
+
+    <section id="about" class="about">
+      <h2>關於昇航電腦</h2>
+      <p>我們專注於網站與系統的規劃、設計與部署，透過技術分享與案例整理，讓更多人快速入門與進階。</p>
+      <p>本網誌採用 GitHub Pages 部署，適合靜態網站與技術文章的長期維護。</p>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2>聯絡我們</h2>
+      <form class="contact-form" onsubmit="return false;">
+        <div class="form-row">
+          <label for="name">姓名</label>
+          <input id="name" name="name" type="text" placeholder="例如：王小明" required>
+        </div>
+        <div class="form-row">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required>
+        </div>
+        <div class="form-row">
+          <label for="message">訊息</label>
+          <textarea id="message" name="message" rows="5" placeholder="想討論的需求或主題…" required></textarea>
+        </div>
+        <button class="btn primary" type="submit">送出</button>
+        <p class="form-note">目前為示範表單，送出僅顯示訊息。</p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <small>© 2025 昇航電腦 · 以 GitHub Pages 部署</small>
+      <a class="back-to-top" href="#" aria-label="回到頁首">↑ 返回頂部</a>
+    </div>
+  </footer>
+</body>
+</html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的網站</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>我的網站</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">首頁</a></li>
+                <li><a href="#about">關於</a></li>
+                <li><a href="#services">服務</a></li>
+                <li><a href="#contact">聯絡</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h2>歡迎來到我的網站</h2>
+                <p>這是一個現代化、響應式的網站設計</p>
+                <button class="cta-button" onclick="showMessage()">點擊我</button>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <h2>關於我們</h2>
+                <p>我們致力於提供最優質的服務和產品，滿足客戶的各種需求。</p>
+                <div class="features">
+                    <div class="feature">
+                        <h3>專業</h3>
+                        <p>擁有豐富的專業經驗</p>
+                    </div>
+                    <div class="feature">
+                        <h3>創新</h3>
+                        <p>不斷追求創新和進步</p>
+                    </div>
+                    <div class="feature">
+                        <h3>品質</h3>
+                        <p>堅持高品質的標準</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="services">
+            <div class="container">
+                <h2>我們的服務</h2>
+                <div class="service-grid">
+                    <div class="service-card">
+                        <h3>網站設計</h3>
+                        <p>專業的網站設計服務</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>系統開發</h3>
+                        <p>客製化系統開發解決方案</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>技術支援</h3>
+                        <p>24/7 技術支援服務</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2>聯絡我們</h2>
+                <form class="contact-form">
+                    <input type="text" placeholder="姓名" required>
+                    <input type="email" placeholder="電子郵件" required>
+                    <textarea placeholder="訊息" rows="5" required></textarea>
+                    <button type="submit">發送訊息</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 我的網站. 版權所有.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
