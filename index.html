@@ -34,7 +34,7 @@
 
   <section class="hero">
     <div class="container">
-      <h1>昇航電腦技術網誌</h1>
+      <h1 class="hero-title">昇航電腦技術網誌</h1>
       <p>從零到一的技術筆記與實務案例，陪你打造更好的網站與系統。</p>
       <div class="hero-actions">
         <a class="btn primary" href="#posts">開始閱讀</a>
@@ -44,51 +44,29 @@
   </section>
 
   <main class="container">
+    <!-- 照片輪播區 -->
+    <section id="gallery" class="gallery" aria-label="照片輪播">
+      <h2>照片輪播</h2>
+      <div class="carousel" data-autoplay="true" data-interval="4000">
+        <div class="carousel-track">
+          <div class="slide">
+            <img src="logo.png" alt="公司識別 Logo" />
+          </div>
+          <div class="slide">
+            <img src="https://picsum.photos/seed/sh-1/1200/800" alt="示例照片 1" />
+          </div>
+          <div class="slide">
+            <img src="https://picsum.photos/seed/sh-2/1200/800" alt="示例照片 2" />
+          </div>
+        </div>
+        <button class="carousel-btn prev" aria-label="上一張">‹</button>
+        <button class="carousel-btn next" aria-label="下一張">›</button>
+        <div class="carousel-dots" aria-label="切換圖片"></div>
+      </div>
+    </section>
     <section id="posts" class="posts">
       <h2>最新文章</h2>
-      <div class="post-grid">
-        <article class="post-card">
-          <a class="cover" href="#">
-            <div class="cover-fallback">昇航電腦</div>
-          </a>
-          <div class="post-meta">
-            <span class="date">2025-10-03</span>
-            <span class="dot">•</span>
-            <span class="tags">教學, GitHub Pages</span>
-          </div>
-          <h3 class="post-title"><a href="#">用 gh-pages 快速部署你的靜態網站</a></h3>
-          <p class="post-excerpt">一步步把本機網站推上 GitHub Pages，免後端、免資料庫，立即上線。</p>
-          <a class="read-more" href="#">閱讀全文 →</a>
-        </article>
-
-        <article class="post-card">
-          <a class="cover" href="#">
-            <div class="cover-fallback">昇航電腦</div>
-          </a>
-          <div class="post-meta">
-            <span class="date">2025-09-12</span>
-            <span class="dot">•</span>
-            <span class="tags">前端, 性能優化</span>
-          </div>
-          <h3 class="post-title"><a href="#">前端效能快修指南：圖片、資源與快取</a></h3>
-          <p class="post-excerpt">從圖片格式到資源壓縮，再到快取策略，幫你的網站載入更順更快。</p>
-          <a class="read-more" href="#">閱讀全文 →</a>
-        </article>
-
-        <article class="post-card">
-          <a class="cover" href="#">
-            <div class="cover-fallback">昇航電腦</div>
-          </a>
-          <div class="post-meta">
-            <span class="date">2025-08-01</span>
-            <span class="dot">•</span>
-            <span class="tags">案例, UI/UX</span>
-          </div>
-          <h3 class="post-title"><a href="#">從需求到上線：小型官網改版實錄</a></h3>
-          <p class="post-excerpt">記錄一次實務改版流程，包含需求釐清、版型設計、前端串接與部署。</p>
-          <a class="read-more" href="#">閱讀全文 →</a>
-        </article>
-      </div>
+      <div id="postGrid" class="post-grid"></div>
     </section>
 
     <section id="categories" class="categories">

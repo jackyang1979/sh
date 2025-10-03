@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>後台｜輪播管理</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+  <style>
+    /* Admin page subtle overrides */
+    .site-header { position: static; backdrop-filter: none; background: transparent; border-bottom: none; }
+    /* 簡易登入樣式 */
+    .admin-login { max-width: 420px; margin: 32px auto; padding: 24px; border: 1px solid var(--border-color, #444); border-radius: 12px; background: rgba(0,0,0,0.3); }
+    .admin-login h1 { margin: 0 0 12px; font-size: 20px; }
+    .admin-login .form-row { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+    .admin-login input { padding: 10px; border-radius: 8px; border: 1px solid var(--border-color, #555); background: rgba(255,255,255,0.06); color: inherit; }
+    .admin-login .btn { width: 100%; }
+    .admin-auth-note { font-size: 13px; opacity: 0.8; margin-top: 8px; }
+    /* 文章管理樣式簡化 */
+    .posts-admin { margin-top: 32px; }
+    .posts-admin h2 { margin-bottom: 12px; }
+    .post-form { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+    .post-form .full { grid-column: 1 / -1; }
+    .post-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+    .post-item { border: 1px solid var(--border-color, #444); border-radius: 10px; padding: 12px; display: grid; grid-template-columns: 80px 1fr auto; gap: 10px; align-items: center; }
+    .post-item img { width: 80px; height: 60px; object-fit: cover; border-radius: 8px; }
+    .post-item .title { font-weight: 600; }
+    .post-item .actions { display: flex; gap: 6px; }
+  </style>
+</head>
+<body class="admin-page">
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img class="brand-logo" src="logo.png" alt="昇航電腦 Logo" width="56" height="56" />
+        <a href="/" class="logo" aria-label="返回首頁">昇航電腦</a>
+        <span class="tagline">後台管理｜輪播</span>
+      </div>
+      <nav class="nav" aria-label="主選單">
+        <ul class="nav-list">
+          <li><a href="index.html">首頁</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- 登入保護 -->
+    <section id="adminLogin" class="admin-login" aria-label="登入後台" hidden>
+      <h1>登入後台</h1>
+      <div class="form-row">
+        <label for="adminUser">帳號</label>
+        <input id="adminUser" type="text" placeholder="admin" autocomplete="username">
+      </div>
+      <div class="form-row">
+        <label for="adminPass">密碼</label>
+        <input id="adminPass" type="password" placeholder="admin123" autocomplete="current-password">
+      </div>
+      <button id="adminLoginBtn" class="btn primary">登入</button>
+      <p class="admin-auth-note">此為簡易保護（前端驗證），正式環境請改用真正後端驗證。</p>
+    </section>
+
+    <section id="adminContent" class="admin-panel" aria-label="輪播與文章管理" hidden>
+      <h1>後台管理</h1>
+      <h2>照片輪播管理</h2>
+
+      <div class="admin-controls">
+        <label><input type="checkbox" id="autoplay"> 自動播放</label>
+        <label>間隔（毫秒）<input type="number" id="interval" min="1000" step="500" placeholder="4000"></label>
+        <button id="saveConfigBtn" class="btn primary">保存設定</button>
+        <button id="clearConfigBtn" class="btn">重置到預設</button>
+      </div>
+
+      <div class="admin-upload">
+        <input type="file" id="fileInput" accept="image/*">
+        <input type="text" id="titleInput" placeholder="圖片說明（可選）">
+        <button id="addImageBtn" class="btn">新增圖片</button>
+      </div>
+
+      <ul id="imageList" class="admin-image-list" aria-label="圖片列表"></ul>
+
+      <div class="admin-import-export">
+        <input type="file" id="importConfigInput" accept="application/json">
+        <button id="importConfigBtn" class="btn">匯入設定</button>
+        <button id="exportConfigBtn" class="btn">匯出設定</button>
+      </div>
+
+      <p class="form-note">提示：目前為本機測試後台，設定儲存在瀏覽器的 LocalStorage。返回首頁即可看到輪播更新。</p>
+
+      <hr style="margin: 24px 0; opacity: .3;">
+
+      <!-- 文章管理 -->
+      <section class="posts-admin" aria-label="文章管理">
+        <h2>文章管理</h2>
+        <div class="post-form">
+          <div class="full">
+            <label for="postTitle">標題</label>
+            <input id="postTitle" type="text" placeholder="文章標題">
+          </div>
+          <div>
+            <label for="postDate">日期</label>
+            <input id="postDate" type="date">
+          </div>
+          <div>
+            <label for="postTags">標籤（逗號分隔）</label>
+            <input id="postTags" type="text" placeholder="教學, GitHub Pages">
+          </div>
+          <div class="full">
+            <label for="postExcerpt">摘要</label>
+            <textarea id="postExcerpt" rows="3" placeholder="文章摘要"></textarea>
+          </div>
+          <div class="full">
+            <label for="postCover">封面圖片 URL（可留空）</label>
+            <input id="postCover" type="url" placeholder="https://...">
+          </div>
+          <div class="full">
+            <label for="postLink">全文連結（可留空）</label>
+            <input id="postLink" type="url" placeholder="https://...">
+          </div>
+        </div>
+        <div style="display:flex; gap:8px; margin-bottom:12px;">
+          <button id="addPostBtn" class="btn">新增文章</button>
+          <button id="savePostsBtn" class="btn primary">保存文章列表</button>
+          <input type="file" id="importPostsInput" accept="application/json">
+          <button id="importPostsBtn" class="btn">匯入文章</button>
+          <button id="exportPostsBtn" class="btn">匯出文章</button>
+        </div>
+        <ul id="postList" class="post-list" aria-label="文章列表"></ul>
+        <p class="form-note">文章資料同樣儲存在 LocalStorage。返回首頁會依此動態渲染最新文章。</p>
+      </section>
+    </section>
+  </main>
+  
+</body>
+</html>
